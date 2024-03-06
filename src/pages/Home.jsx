@@ -1,10 +1,10 @@
-import TutorialCard from "../components/ui/TutorialCard";
+import CompetitionCard from "../components/ui/CompetitionCard";
 
 const Home = () => {
   return (
     <>
       <div className="flex">
-        <TutorialCard />
+        <CompetitionCard />
       </div>
     </>
   );
