@@ -8,6 +8,8 @@ const CompetitionDetails = () => {
   const { id } = useParams();
   const [competition, setCompetition] = useState([]);
 
+  const ngrok = "https://concrete-pika-noticeably.ngrok-free.app";
+
   useEffect(() => {
     const fetchCompetition = async () => {
       const response = await competitionService.get(id);
@@ -22,7 +24,7 @@ const CompetitionDetails = () => {
       <Button value={competition.category} textColor="text-white" />
       <h1 className="mt-4 mb-5 text-white font-semibold text-4xl">{competition.title}</h1>
       <p className="text-sm text-[#696A75] mb-9">{competition.createdAt}</p>
-      <img className="max-w-sm mb-8" src={image} alt="" />
+      <img className="max-w-sm mb-8" src={ngrok + competition.image} alt="" />
       <p className="text-white text-xl mb-3">{competition.description}</p>
       <div className="text-white space-y-0">
         <p>Dengan total hadiah sebesar {competition.prize}</p>

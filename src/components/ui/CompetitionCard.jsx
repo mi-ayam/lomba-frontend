@@ -6,6 +6,8 @@ import competitionService from "../../service/competitions.service";
 const CompetitionCard = () => {
   const [competitions, setCompetitions] = useState([]);
 
+  const ngrok = "https://concrete-pika-noticeably.ngrok-free.app";
+
   useEffect(() => {
     const fetchResponse = competitionService.getAll();
     fetchResponse.then((response) => {
@@ -20,9 +22,10 @@ const CompetitionCard = () => {
           return (
             <div key={competition.id} className="max-w-xs border border-fg-gray rounded-lg shadow ">
               <Link to={"/competitions/" + competition.id}>
+                {console.log(competition.image)}
                 <img
                   className="w-full text-white flex justify-center items-center"
-                  src={image}
+                  src={ngrok + competition.image}
                   alt="an image"
                 />
               </Link>
