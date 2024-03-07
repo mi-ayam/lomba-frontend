@@ -22,7 +22,6 @@ const CompetitionCard = () => {
           return (
             <div key={competition.id} className="max-w-xs border border-fg-gray rounded-lg shadow ">
               <Link to={"/competitions/" + competition.id}>
-                {console.log(competition.image)}
                 <img
                   className="w-full text-white flex justify-center items-center"
                   src={ngrok + competition.image}
