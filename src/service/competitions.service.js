@@ -16,10 +16,15 @@ const remove = (id) => {
   return axiosInstance.delete(`${url}/competitions/${id}`);
 };
 
+const create = (data) => {
+  return axiosInstance.post(`${url}/competitions`, data);
+};
+
 const competitionService = {
   getAll,
   get,
   remove,
+  create,
 };
 
 export default competitionService;

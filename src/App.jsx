@@ -4,6 +4,7 @@ import "./index.css";
 import Home from "./pages/Home";
 import Layout from "./components/layout/Layout";
 import CompetitionDetails from "./pages/CompetitionDetails";
+import CompetitionPost from "./pages/CompetitionPost";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/competitions/:id" element={<CompetitionDetails />} />
+          <Route path="/postCompetition" element={<CompetitionPost />} />
         </Routes>
       </Layout>
     </BrowserRouter>
