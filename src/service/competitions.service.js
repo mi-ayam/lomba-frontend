@@ -16,8 +16,8 @@ const remove = (id) => {
   return axiosInstance.delete(`${url}/competitions/${id}`);
 };
 
-const create = (data) => {
-  return axiosInstance.post(`${url}/competitions`, data);
+const create = (data, headers) => {
+  return axios.post(`${url}/competitions`, data, headers);
 };
 
 const competitionService = {
