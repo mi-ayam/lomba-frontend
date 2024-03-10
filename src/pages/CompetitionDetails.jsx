@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import Button from "../components/ui/Button";
 import { useState, useEffect } from "react";
 import competitionService from "../service/competitions.service";
@@ -57,12 +57,17 @@ const CompetitionDetails = () => {
         <p>Biaya pendaftaran: {competition.registration_fee}</p>
         <p>Deadline registrasi: {competition.registration_deadline}</p>
       </div>
-      <Button
-        backgroundColor="bg-red-800"
-        value="Delete"
-        textColor="text-white"
-        onClick={deleteCompetition}
-      />
+      <div className="space-x-3">
+        <Button
+          backgroundColor="bg-red-800"
+          value="Delete"
+          textColor="text-white"
+          onClick={deleteCompetition}
+        />
+        <Link to={"/editCompetition/" + competition.id}>
+          <Button value="Edit" backgroundColor="bg-secondary-blue" textColor="text-white" />
+        </Link>
+      </div>
     </div>
   );
 };
