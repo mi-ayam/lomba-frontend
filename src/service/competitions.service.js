@@ -20,11 +20,16 @@ const create = (data, headers) => {
   return axios.post(`${url}/competitions`, data, headers);
 };
 
+const update = (id, data, headers) => {
+  return axios.post(`${url}/competitions/${id}`, data, headers);
+};
+
 const competitionService = {
   getAll,
   get,
   remove,
   create,
+  update,
 };
 
 export default competitionService;
