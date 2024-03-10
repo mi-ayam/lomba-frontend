@@ -2,6 +2,8 @@ import { useState } from "react";
 import Datepicker from "tailwind-datepicker-react";
 import competitionService from "../service/competitions.service";
 import { useNavigate } from "react-router-dom";
+import FormInput from "../components/ui/FormInput";
+import FormAreaInput from "../components/ui/FormAreaInput";
 
 const CompetitionPost = () => {
   // Datepicker configs
@@ -104,158 +106,100 @@ const CompetitionPost = () => {
 
   return (
     <>
-      {submitted ? (
-        <div>
-          <h1>Horray!</h1>
-          <button
-            type="submit"
-            onclick={newCompetition}
-            false
-            className="relative mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Post competition
-          </button>
+      <div className="max-w-sm ">
+        <div className="mb-5">
+          <FormInput
+            name={"title"}
+            type={"text"}
+            placeholder={"Lomba Web Design AI ++++"}
+            value={competition.title}
+            onChange={handleInputChange}
+          />
         </div>
-      ) : (
-        <div className="max-w-sm ">
-          <div className="mb-5">
+        <div className="mb-5">
+          <FormInput
+            name={"category"}
+            type={"text"}
+            placeholder={"Technology"}
+            value={competition.category}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-5">
+          <FormInput
+            name={"description"}
+            placeholder={"Describe your competition here"}
+            type={"text"}
+            value={competition.description}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-5">
+          <FormInput
+            name={"registration_fee"}
+            type={"text"}
+            placeholder={"50000"}
+            value={competition.registration_fee}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="mb-5">
+          <FormInput
+            name={"prize"}
+            type={"text"}
+            placeholder={"500000"}
+            value={competition.prize}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="flex flex-col ">
+          <div className="relative ">
             <label
-              htmlFor="title"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              htmlFor="date"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
-              Title
+              Registration Deadline
             </label>
-            <input
-              type="text"
-              id="title"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              placeholder="Lomba Web Design AI ++++"
-              onChange={handleInputChange}
-              value={competition.title}
-              name="title"
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="category"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Category
-            </label>
-            <input
-              type="text"
-              id="category"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              placeholder="Technology"
-              value={competition.category}
-              onChange={handleInputChange}
-              name="category"
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="description"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Description
-            </label>
-            <textarea
-              id="description"
-              rows="4"
-              className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Describe your competition here..."
-              value={competition.description}
-              onChange={handleInputChange}
-              name="description"
-            ></textarea>
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="registration_fee"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Registration fee
-            </label>
-            <input
-              type="text"
-              id="registration_fee"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              placeholder="50000"
-              value={competition.registration_fee}
-              onChange={handleInputChange}
-              name="registration_fee"
-              required
-            />
-          </div>
-          <div className="mb-5">
-            <label
-              htmlFor="prize"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >
-              Prize
-            </label>
-            <input
-              type="text"
-              id="prize"
-              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-              placeholder="5000000"
-              value={competition.prize}
-              onChange={handleInputChange}
-              name="prize"
-              required
-            />
-          </div>
-          <div className="flex flex-col ">
-            <div className="relative ">
-              <label
-                htmlFor="date"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >
-                Registration Deadline
-              </label>
-              <Datepicker
-                show={show}
-                setShow={(state) => setShow(state)}
-                options={options}
-                classNames="absolute"
-                value={competition.registration_deadline}
-                onChange={(e) => {
-                  setCompetition({ ...competition, registration_deadline: e });
-                }}
-              />
-            </div>
-          </div>
-          <div className="mt-16">
-            <label
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              htmlFor="image"
-            >
-              Upload file
-            </label>
-            <input
-              className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 file:border-0 file:text-gray-300 file:bg-gray-900 file:p-2"
-              aria-describedby="file_input_help"
-              id="image"
-              type="file"
+            <Datepicker
+              show={show}
+              setShow={(state) => setShow(state)}
+              options={options}
+              classNames="absolute"
+              value={competition.registration_deadline}
               onChange={(e) => {
-                setCompetition({ ...competition, image: e.target.files[0] });
+                setCompetition({ ...competition, registration_deadline: e });
               }}
             />
-            <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
-              PNG, JPG.
-            </p>
           </div>
-          <button
-            type="submit"
-            onClick={addCompetition}
-            className="relative mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Post new competition
-          </button>
         </div>
-      )}
+        <div className="mt-16">
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            htmlFor="image"
+          >
+            Upload file
+          </label>
+          <input
+            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 file:border-0 file:text-gray-300 file:bg-gray-900 file:p-2"
+            aria-describedby="file_input_help"
+            id="image"
+            type="file"
+            onChange={(e) => {
+              setCompetition({ ...competition, image: e.target.files[0] });
+            }}
+          />
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">
+            PNG, JPG.
+          </p>
+        </div>
+        <button
+          type="submit"
+          onClick={addCompetition}
+          className="relative mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Post new competition
+        </button>
+      </div>
     </>
   );
 };
