@@ -17,38 +17,36 @@ const CompetitionCard = () => {
 
   return (
     <>
-      <div className="grid grid-cols-2 md:grid-cols-10 gap-4 w-full">
-        {competitions.map((competition) => {
-          return (
-            <div key={competition.id} className="w-full">
-              <div className="max-w-64 md:max-w-xs border border-fg-gray rounded-lg shadow ">
-                <Link to={"/competitions/" + competition.id}>
-                  <img
-                    className="w-full text-white flex justify-center items-center"
-                    src={ngrok + competition.image}
-                    alt="an image"
-                  />
-                </Link>
-                <div className="p-5">
-                  <Link
-                    to={"/competitions/" + competition.id}
-                    className="inline-flex items-center px-2 py-1 my-2 text-xs md:text-sm font-medium text-center
+      {competitions.map((competition) => {
+        return (
+          <div key={competition.id} className="w-full">
+            <div className="max-w-64 md:max-w-xs border border-fg-gray rounded-lg shadow ">
+              <Link to={"/competitions/" + competition.id}>
+                <img
+                  className="w-full text-white flex justify-center items-center"
+                  src={ngrok + competition.image}
+                  alt="an image"
+                />
+              </Link>
+              <div className="p-5">
+                <Link
+                  to={"/competitions/" + competition.id}
+                  className="inline-flex items-center px-2 py-1 my-2 text-xs md:text-sm font-medium text-center
           bg-secondary-blue bg-opacity-5 text-secondary-blue rounded-lg "
-                  >
-                    {competition.category}
-                  </Link>
-                  <Link to={"/competitions/" + competition.id}>
-                    {/* title */}
-                    <h5 className="text-xl md:text-2xl font-semibold tracking-tight text-white">
-                      {competition.title}
-                    </h5>
-                  </Link>
-                </div>
+                >
+                  {competition.category}
+                </Link>
+                <Link to={"/competitions/" + competition.id}>
+                  {/* title */}
+                  <h5 className="text-xl md:text-2xl font-semibold tracking-tight text-white">
+                    {competition.title}
+                  </h5>
+                </Link>
               </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+        );
+      })}
     </>
   );
 };
