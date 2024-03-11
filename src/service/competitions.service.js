@@ -21,7 +21,7 @@ const create = (data, headers) => {
 };
 
 const update = (id, data, headers) => {
-  return axios.post(`${url}/competitions/${id}`, data, headers);
+  return axios.put(`${url}/competitions/${id}`, data, headers);
 };
 
 const competitionService = {

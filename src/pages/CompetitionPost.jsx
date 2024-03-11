@@ -126,7 +126,7 @@ const CompetitionPost = () => {
           />
         </div>
         <div className="mb-5">
-          <FormInput
+          <FormAreaInput
             name={"description"}
             placeholder={"Describe your competition here"}
             type={"text"}
