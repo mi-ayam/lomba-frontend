@@ -15,14 +15,13 @@ git clone https://github.com/mi-ayam/lomba-frontend.git
 
 ```
 cd lomba-frontend
-//installing dependencies
 npm install
 ```
 ### Migrate database
+make sure you already have a database named ayolomba in your local PC
 
 ```
-//make sure you already have a database
-//named ayolomba in your local PC
+
 npx sequelize-cli db:migrate
 ```
 
@@ -30,5 +29,7 @@ npx sequelize-cli db:migrate
 
 ```
 npm run dev
-//go to http://localhost:5173/
+
 ```
+
+go to `http://localhost:5173/`
