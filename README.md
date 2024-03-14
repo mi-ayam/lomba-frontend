@@ -1,8 +1,34 @@
-# React + Vite
+# Ayo Lomba!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Find competition anywhere anytime you like!
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Cloning the program
+
+```
+git clone https://github.com/mi-ayam/lomba-frontend.git
+```
+
+
+### Executing program
+
+```
+cd lomba-frontend
+//installing dependencies
+npm install
+```
+### Migrate database
+
+```
+//make sure you already have a database
+//named ayolomba in your local PC
+npx sequelize-cli db:migrate
+```
+
+### Open program in localhost
+
+```
+npm run dev
+//go to http://localhost:5173/
+```
