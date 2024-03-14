@@ -21,7 +21,6 @@ npm install
 make sure you already have a database named ayolomba in your local PC
 
 ```
-
 npx sequelize-cli db:migrate
 ```
 
@@ -29,7 +28,6 @@ npx sequelize-cli db:migrate
 
 ```
 npm run dev
-
 ```
 
 go to `http://localhost:5173/`
