@@ -22,10 +22,10 @@ const CompetitionPost = () => {
       todayBtn: "",
       clearBtn: "",
       icons: "",
-      text: "",
+      text: "text-red",
       disabledText: "",
-      input: "",
-      inputIcon: "",
+      input: "bg-bg-blue text-gray-500",
+      inputIcon: "text-gray-500",
       selected: "",
     },
   };
@@ -154,10 +154,7 @@ const CompetitionPost = () => {
         </div>
         <div className="flex flex-col ">
           <div className="relative ">
-            <label
-              htmlFor="date"
-              className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-            >
+            <label htmlFor="date" className="block mb-2 text-sm font-medium text-white">
               Registration Deadline
             </label>
             <Datepicker
