@@ -1,11 +1,26 @@
-import { useState } from "react";
-import Datepicker from "tailwind-datepicker-react";
-import competitionService from "../service/competitions.service";
-import { useNavigate } from "react-router-dom";
-import FormInput from "../components/ui/FormInput";
-import FormAreaInput from "../components/ui/FormAreaInput";
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-const CompetitionPost = () => {
+import DatePicker from "tailwind-datepicker-react";
+import FormInput from "../../components/ui/FormInput";
+import FormAreaInput from "../../components/ui/FormAreaInput";
+import competitionService from "../../service/competitions.service";
+
+const CompetitionEdit = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const initialState = {
+    title: "",
+    category: "",
+    description: "",
+    registration_fee: "",
+    prize: "",
+    registration_deadline: "",
+    image: "",
+  };
+  const [competition, setCompetition] = useState(initialState);
+
   // Datepicker configs
   const options = {
     autoHide: true,
@@ -30,41 +45,33 @@ const CompetitionPost = () => {
     },
   };
 
-  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const fetchCompetition = async () => {
+      const res = await competitionService.get(id);
+      setCompetition({
+        title: res.data.data.title,
+        category: res.data.data.category,
+        description: res.data.data.description,
+        registration_fee: res.data.data.registration_fee,
+        prize: res.data.data.prize,
+        registration_deadline: new Date(res.data.data.registration_deadline),
+        image: res.data.data.image,
+      });
+    };
 
-  // POST request to the server
-  const intialState = {
-    title: "",
-    category: "",
-    description: "",
-    registration_fee: "",
-    prize: "",
-    registration_deadline: "",
-    image: "",
-  };
-
-  const [competition, setCompetition] = useState(intialState);
-  const [submitted, setSubmitted] = useState(false);
-
-  const navigate = useNavigate();
+    fetchCompetition();
+  }, [id]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setCompetition({ ...competition, [name]: value });
   };
 
-  const addCompetition = (e) => {
+  const editCompetition = (e) => {
     e.preventDefault();
-    let data = {
-      title: competition.title,
-      category: competition.category,
-      description: competition.description,
-      registration_fee: competition.registration_fee,
-      prize: competition.prize,
-      registration_deadline: competition.registration_deadline,
-    };
 
     const formData = new FormData();
+
     formData.append("title", competition.title);
     formData.append("category", competition.category);
     formData.append("description", competition.description);
@@ -76,32 +83,16 @@ const CompetitionPost = () => {
     let headers = {
       "Content-Type": "multipart/form-data",
     };
-
-    const fetchResponse = competitionService.create(formData, headers);
-    fetchResponse
-      .then((res) => {
-        setCompetition({
-          id: res.data.id,
-          title: res.data.title,
-          category: res.data.category,
-          description: res.data.description,
-          registration_fee: res.data.registration_fee,
-          prize: res.data.prize,
-          registration_deadline: res.data.registration_deadline,
-        });
-        setSubmitted(true);
-        console.log(res.data);
-        navigate("/");
-      })
-      .catch((e) => {
-        console.log(competition);
-        console.log(e);
+    try {
+      competitionService.update(id, formData, headers).then((res) => {
+        console.log(res);
       });
-  };
 
-  const newCompetition = () => {
-    setCompetition(intialState);
-    setSubmitted(false);
+      navigate(`/competitions/${id}`);
+    } catch (error) {
+      console.log("Failed to update competition");
+      console.log(error);
+    }
   };
 
   return (
@@ -160,7 +151,7 @@ const CompetitionPost = () => {
             >
               Registration Deadline
             </label>
-            <Datepicker
+            <DatePicker
               show={show}
               setShow={(state) => setShow(state)}
               options={options}
@@ -194,7 +185,7 @@ const CompetitionPost = () => {
         </div>
         <button
           type="submit"
-          onClick={addCompetition}
+          onClick={editCompetition}
           className="relative mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Post new competition
@@ -204,4 +195,4 @@ const CompetitionPost = () => {
   );
 };
 
-export default CompetitionPost;
+export default CompetitionEdit;

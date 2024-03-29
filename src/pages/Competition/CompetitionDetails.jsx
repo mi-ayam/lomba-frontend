@@ -1,8 +1,7 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
-import Button from "../components/ui/Button";
+import Button from "../../components/ui/Button";
 import { useState, useEffect } from "react";
-import competitionService from "../service/competitions.service";
-import image from "../assets/poster1.jpeg";
+import competitionService from "../../service/competitions.service";
 
 const CompetitionDetails = () => {
   const { id } = useParams();

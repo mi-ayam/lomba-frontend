@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Router, Route } from "react-router-dom";
 import "./index.css";
 import Home from "./pages/Home";
 import Layout from "./components/layout/Layout";
-import CompetitionDetails from "./pages/CompetitionDetails";
-import CompetitionPost from "./pages/CompetitionPost";
-import CompetitionEdit from "./pages/CompetitionEdit";
+import CompetitionDetails from "./pages/Competition/CompetitionDetails";
+import CompetitionEdit from "./pages/Competition/CompetitionEdit";
+import CompetitionPost from "./pages/Competition/CompetitionPost";
 
 function App() {
   return (
