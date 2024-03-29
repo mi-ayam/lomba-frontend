@@ -1,11 +1,13 @@
 import CompetitionCard from "../components/ui/CompetitionCard";
+import Jumbotron from "../components/ui/Jumbotron";
 
 const Home = () => {
   return (
     <>
-      <div className="grid grid-cols-2 sm:grid-cols-4 auto-rows-auto md:grid-cols-6 xl:grid-cols-10 gap-4 w-full">
-        <CompetitionCard />
-      </div>
+      <section className="mt-20 flex justify-center items-center">
+        <Jumbotron />
+      </section>
+      <CompetitionCard />
     </>
   );
 };
