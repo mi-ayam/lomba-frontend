@@ -6,6 +6,8 @@ import Layout from "./components/layout/Layout";
 import CompetitionDetails from "./pages/Competition/CompetitionDetails";
 import CompetitionEdit from "./pages/Competition/CompetitionEdit";
 import CompetitionPost from "./pages/Competition/CompetitionPost";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/competitions/:id" element={<CompetitionDetails />} />
           <Route path="/postCompetition" element={<CompetitionPost />} />
           <Route path="/editCompetition/:id" element={<CompetitionEdit />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -17,7 +17,7 @@ const Navbar = () => {
         <h2 className="text-white">About Us</h2>
       </div>
       <div className="space-x-5">
-        <Link to="">
+        <Link to="/login">
           <Button value="Login" textColor="text-white" backgroundColor="bg-secondary-blue" />
         </Link>
         <Link to="/postCompetition">
