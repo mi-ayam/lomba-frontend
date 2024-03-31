@@ -3,7 +3,7 @@ const FormInput = ({ name, type, placeholder, onChange, value }) => {
     <>
       <label htmlFor={name} className="block mb-2 text-sm font-medium text-white">
         {/* capitalize first letter of name and change underscores to space */}
-        {name.charAt(0).toUpperCase() + name.replace(/_/g, " ").slice(1)}
+        {name.charAt(0).toUpperCase() + name.replace(/([A-Z])|(_)/g, " $1").slice(1)}
       </label>
       <input
         type={type}
